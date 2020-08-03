@@ -6,46 +6,53 @@ public class Postclass {
 	
 		
 		Scanner S = new Scanner(System.in);
-		String title[] = new String[10]; //ì œëª©
-		String body[] = new String[10];  //ë³¸ë¬¸
+		
+		String title[] = new String[10]; //Á¦¸ñ
+		String body[] = new String[10];  //º»¹®
 		int post_NO = 0;
 		//
 		while(true) {
-			System.out.println("ëª…ë ¹ì–´ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”");
+			System.out.println("¸í·É¾î¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä");
 			String txt = S.nextLine();
 			
-			//ì¢…ë£Œ
+			//Á¾·á
 			if(txt.equals("exit")) { 
-				System.out.println("ì‹œìŠ¤í…œ ì¢…ë£Œ");
+				System.out.println("½Ã½ºÅÛ Á¾·á");
 				break;
 			}
-			//ëª…ë ¹ì–´ì•ˆë‚´
+			//¸í·É¾î ¾È³»
 			else if (txt.equals("help")) { 
-				System.out.println("==== ëª…ë ¹ì–´ ëª©ë¡ ====");
-				System.out.println("exit - ì‹œìŠ¤í…œ ì¢…ë£Œ");
-				System.out.println("add - ê²Œì‹œë¬¼ ì •ë³´ë¥¼ ì €ì¥");
-				System.out.println("list - ê²Œì‹œë¬¼ ëª©ë¡ ì¶œë ¥");
+				System.out.println("==== ¸í·É¾î ¸ñ·Ï ====");
+				System.out.println("exit - ½Ã½ºÅÛÀ» Á¾·áÇÕ´Ï´Ù.");
+				System.out.println("add - °Ô½Ã±ÛÀ» ÀÛ¼ºÇÕ´Ï´Ù.");
+				System.out.println("list - °Ô½Ã±Û ¸ñ·ÏÀ» ºÒ·¯¿É´Ï´Ù.");
+				System.out.println("update - ÀÌ¹Ì ÀÛ¼ºÇÑ °Ô½Ã±ÛÀ» ¼öÁ¤ÇÕ´Ï´Ù.");
+				System.out.println("delete - ÀÌ¹Ì ÀÛ¼ºÇÑ °Ô½Ã±ÛÀ» »èÁ¦ÇÕ´Ï´Ù.");
 				System.out.println("=====================");
 			}
-			//ê¸€ì‘ì„±
+			//°Ô½Ã±Û ÀÛ¼º
 			else if (txt.equals("add")) { 
-				System.out.println("ì œëª©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”");
-				title[post_NO] = S.nextLine(); //ì œëª©
-				System.out.println("ë‚´ìš©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”");
-				body[post_NO] = S.nextLine();  //ë³¸ë¬¸
+				System.out.println("Á¦¸ñÀ» ÀÛ¼ºÇØ ÁÖ¼¼¿ä");
+				title[post_NO] = S.nextLine(); //Á¦¸ñ
+				System.out.println("º»¹®À» ÀÛ¼ºÇØ ÁÖ¼¼¿ä");
+				body[post_NO] = S.nextLine();  //º»¹®
 				post_NO ++;
 			}
-			//ê¸€ëª©ë¡ë¶ˆëŸ¬ì˜¤ê¸°
+			//°Ô½Ã±Û ¸ñ·Ï
 			else if (txt.equals("list")) {
 				for(int i = 0; i < post_NO; i++) {
-					
-					System.out.println("ì œëª© : " + title[post_NO]);
-					System.out.println("ë‚´ìš© : " + body[post_NO]);
+					System.out.println("=====[ Á¦¸ñ ]=====");
+					System.out.println( i +". "+ title[i]);// Á¦¸ñ
+					System.out.println("=====[ º»¹® ]=====");
+					System.out.println(" ");	 // º»
+					System.out.println(body[i]);
+					System.out.println(" ");	 // ¹®
+					System.out.println("=================");
 					System.out.println(" ");
 				}
 			}
 			else {
-				System.out.println("ì˜¬ë°”ë¥¸ ëª…ë ¹ì–´ê°€ ì•„ë‹™ë‹ˆë‹¤.");
+				System.out.println("Àß¸øµÈ ¸í·É¾îÀÔ´Ï´Ù.");
 			}
 		
 		}
