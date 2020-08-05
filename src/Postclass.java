@@ -3,60 +3,116 @@ import java.util.Scanner;
 public class Postclass {
 
 	public static void main(String[] args) {
-	
-		
+
 		Scanner S = new Scanner(System.in);
-		
-		String title[] = new String[10]; //Á¦¸ñ
-		String body[] = new String[10];  //º»¹®
-		int post_NO = 0;
+
+		int[] ids = new int[10]; //ê²Œì‹œë¬¼ ë²ˆí˜¸ ì €ì¥ì†Œ
+		String title[] = new String[10]; //ì œëª©
+		String body[] = new String[10];  //ë³¸ë¬¸
+		int post_NO = 0;// ê²Œì‹œë¬¼ ë²ˆí˜¸(LastIndex)
+		int LastId = 0; // ë§ˆì§€ë§‰ ê²Œì‹œë¬¼ ë²ˆí˜¸
 		//
 		while(true) {
-			System.out.println("¸í·É¾î¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä");
+			System.out.println("ëª…ë ¹ì–´ë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”");
 			String txt = S.nextLine();
-			
-			//Á¾·á
+
+			//ì¢…ë£Œ
 			if(txt.equals("exit")) { 
-				System.out.println("½Ã½ºÅÛ Á¾·á");
+				System.out.println("ì‹œìŠ¤í…œì„ ì¢…ë£Œí•©ë‹ˆë‹¤.");
 				break;
 			}
-			//¸í·É¾î ¾È³»
+			//ëª…ë ¹ì–´ ì•ˆë‚´
 			else if (txt.equals("help")) { 
-				System.out.println("==== ¸í·É¾î ¸ñ·Ï ====");
-				System.out.println("exit - ½Ã½ºÅÛÀ» Á¾·áÇÕ´Ï´Ù.");
-				System.out.println("add - °Ô½Ã±ÛÀ» ÀÛ¼ºÇÕ´Ï´Ù.");
-				System.out.println("list - °Ô½Ã±Û ¸ñ·ÏÀ» ºÒ·¯¿É´Ï´Ù.");
-				System.out.println("update - ÀÌ¹Ì ÀÛ¼ºÇÑ °Ô½Ã±ÛÀ» ¼öÁ¤ÇÕ´Ï´Ù.");
-				System.out.println("delete - ÀÌ¹Ì ÀÛ¼ºÇÑ °Ô½Ã±ÛÀ» »èÁ¦ÇÕ´Ï´Ù.");
+				System.out.println("==== ëª…ë ¹ì–´ ëª©ë¡ ====");
+				System.out.println("exit - ì‹œìŠ¤í…œì„ ì¢…ë£Œí•©ë‹ˆë‹¤.");
+				System.out.println("add - ê²Œì‹œê¸€ì„ ì‘ì„±í•©ë‹ˆë‹¤.");
+				System.out.println("list - ê²Œì‹œê¸€ ëª©ë¡ì„ ë¶ˆëŸ¬ì˜µë‹ˆë‹¤.");
+				System.out.println("update - ì´ë¯¸ ì‘ì„±í•œ ê²Œì‹œê¸€ì„ ìˆ˜ì •í•©ë‹ˆë‹¤.");
+				System.out.println("delete - ì´ë¯¸ ì‘ì„±í•œ ê²Œì‹œê¸€ì„ ì‚­ì œí•©ë‹ˆë‹¤.");
 				System.out.println("=====================");
 			}
-			//°Ô½Ã±Û ÀÛ¼º
-			else if (txt.equals("add")) { 
-				System.out.println("Á¦¸ñÀ» ÀÛ¼ºÇØ ÁÖ¼¼¿ä");
-				title[post_NO] = S.nextLine(); //Á¦¸ñ
-				System.out.println("º»¹®À» ÀÛ¼ºÇØ ÁÖ¼¼¿ä");
-				body[post_NO] = S.nextLine();  //º»¹®
+			//ê²Œì‹œê¸€ ì‘ì„±
+			else if (txt.equals("add")) {
+				LastId ++;
+				int id = LastId;
+				ids[post_NO] = id;
+				System.out.println("ì œëª©ì„ ì‘ì„±í•´ ì£¼ì„¸ìš”");
+				title[post_NO] = S.nextLine(); //ì œëª©
+				System.out.println("ë³¸ë¬¸ì„ ì‘ì„±í•´ ì£¼ì„¸ìš”");
+				body[post_NO] = S.nextLine();  //ë³¸ë¬¸
 				post_NO ++;
 			}
-			//°Ô½Ã±Û ¸ñ·Ï
+			//ê²Œì‹œê¸€ ëª©ë¡
 			else if (txt.equals("list")) {
 				for(int i = 0; i < post_NO; i++) {
-					System.out.println("=====[ Á¦¸ñ ]=====");
-					System.out.println( i +". "+ title[i]);// Á¦¸ñ
-					System.out.println("=====[ º»¹® ]=====");
-					System.out.println(" ");	 // º»
+					System.out.println("=====[ ì œëª© ]=====");
+					System.out.println( ids[i] +". "+ title[i]);// ì œëª©
+					System.out.println("=====[ ë³¸ë¬¸ ]=====");
+					System.out.println(" ");	 // ë³¸
 					System.out.println(body[i]);
-					System.out.println(" ");	 // ¹®
+					System.out.println(" ");	 // ë¬¸
 					System.out.println("=================");
 					System.out.println(" ");
 				}
 			}
-			else {
-				System.out.println("Àß¸øµÈ ¸í·É¾îÀÔ´Ï´Ù.");
-			}
-		
-		}
+			// ê¸€ ìˆ˜ì •
+			else if (txt.equals("update")) {	// 1
+				System.out.println("ìˆ˜ì •í•  ê²Œì‹œê¸€ ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”");
+				String target = S.nextLine();
+				int NO = Integer.parseInt(target);
 
+				int targetIndex = -1; //ì°¾ëŠ”ê²Œ ì—†ì„ë•Œ
+				for(int i= 0; i < post_NO; i++) {
+					if (ids[i] == NO) {
+						targetIndex = i;	
+					}	
+				}
+				if(targetIndex == -1) {
+					System.out.println("ì—†ëŠ” ê²Œì‹œê¸€ ì…ë‹ˆë‹¤.");
+				}
+				else {
+					System.out.println("ì œëª©ì„ ìˆ˜ì •í•´ì£¼ì„¸ìš”");
+					String U_title = S.nextLine();
+					System.out.println("ë¶„ë¬¸ì„ ìˆ˜ì •í•´ì£¼ì„¸ìš”");
+					String U_body = S.nextLine();
+					title[targetIndex] = U_title;
+					body[targetIndex] = U_body;
+				}
+				
+			}	
+			//ê¸€ ì‚­ì œ
+			else if (txt.equals("delete")) {
+				System.out.println("ì‚­ì œí•  ê²Œì‹œê¸€ ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”");
+				String target = S.nextLine();
+				int NO = Integer.parseInt(target);
+				int targetIndex = -1; //ì°¾ëŠ”ê²Œ ì—†ì„ë•Œ
+				for(int i= 0; i < post_NO; i++) {
+					if (ids[i] == NO) {
+						targetIndex = i;
+					}
+				}
+				if(targetIndex == -1) {
+					System.out.println("ì—†ëŠ” ê²Œì‹œê¸€ ì…ë‹ˆë‹¤.");
+				}
+				else {
+					System.out.println(NO + "ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.");
+					for (int j=targetIndex; j < post_NO; j++) {
+						ids[j] = ids[j+1];
+						title[j] = title[j+1];
+						body[j] = body[j+1];
+					}
+					post_NO--;
+				}
+			}
+			//ë§‰ã…Šã…•
+			else {
+				System.out.println("ì˜ëª»ëœ ëª…ë ¹ì–´ì…ë‹ˆë‹¤.");
+			}
+
+		}
+////////
+		
 		
 	}
+
 }
