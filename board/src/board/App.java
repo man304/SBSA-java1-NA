@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class App {
 	
 	ArrayList<Article> articles = new ArrayList<>();
+	ArrayList<Member> members = new ArrayList<>();
 	
 	void start() {
 		Scanner sc = new Scanner(System.in);
@@ -92,7 +93,7 @@ public class App {
 			}
 			
 			else if(s.equals("signup")) {
-				
+				//멤버로수정해
 				Article article = new Article();
 				
 				System.out.println("새 아이디를 입력해주세요");

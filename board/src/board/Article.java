@@ -6,6 +6,7 @@ public class Article {
 	private int id;
 	private String title;
 	private String body;
+	
 	private String Account;
 	private String Password;
 	private String Username;
@@ -28,13 +29,24 @@ public class Article {
 	public void setBody(String body) {
 		this.body = body;
 	}
+	
+	public String getAccount() {
+		return Account;
+	}
 	public void setAccont(String Account) {
 		this.Account = Account;
+	}
+	public String getPassword() {
+		return Password;
 	}
 	public void setPassword(String Password) {
 		this.Password = Password;	
 	}
+	public String getUsername() {
+		return Username;
+	}
 	public void setUsername(String Username) {
 		this.Username = Username;
 	}
+	
 }
