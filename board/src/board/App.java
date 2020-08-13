@@ -5,17 +5,31 @@ import java.util.Scanner;
 
 public class App {
 	
-	ArrayList<Article> articles = new ArrayList<>();
-	ArrayList<Member> members = new ArrayList<>();
+	static ArrayList<Article> articles = new ArrayList<>();
+	static ArrayList<Member> members = new ArrayList<>();
 	
 	void start() {
+		
 		Scanner sc = new Scanner(System.in);
-
+		
+		boolean APP = false;
+		
+		System.out.println("게시판 기능은 1번, 회원 기능은 2번을 입력해주세요.");
+		String S = sc.nextLine();
+		if(S.equals("1")) {
+			APP = true;
+		}
+		else if(S.equals("2")) {
+			MemberController MC = new MemberController();
+			MC.start();
+		}
+		
 		int lastId = 0; // 가장 마지막에 추가된 게시물의 게시물 번호
-		while (true) {
+		while (APP) {
+			System.out.println();
 			System.out.println("명령어를 입력해주세요");
 			String s = sc.nextLine();
-
+			
 			if (s.equals("exit")) {
 
 				System.out.println("프로그램 종료!");
@@ -23,12 +37,12 @@ public class App {
 
 			} else if (s.equals("help")) {
 
+				System.out.println("== 게시판 기능 명령어 ==");
 				System.out.println("add : 게시물 등록");
 				System.out.println("list : 게시물 목록");
 				System.out.println("update : 게시물 수정");
 				System.out.println("delete : 게시물 삭제");
 				System.out.println("exit : 프로그램 종료");
-				System.out.println("signup : 회원 가입 기능");
 				
 			} else if (s.equals("add")) {
 				
@@ -47,7 +61,8 @@ public class App {
 				article.setBody(sc.nextLine());
 				
 				articles.add(article);
-
+				BACK();
+				
 			} else if (s.equals("list")) {
 
 				for (int i = 0; i < articles.size(); i++) {
@@ -75,9 +90,10 @@ public class App {
 					Article article = articles.get(targetIndex);
 					article.setTitle(title);
 					article.setBody(body);
-
+					
 				}
-
+				BACK();
+				
 			} else if (s.equals("delete")) {
 				System.out.println("삭제할 게시물 번호를 입력해주세요.");
 				String target = sc.nextLine();
@@ -90,25 +106,10 @@ public class App {
 				} else {
 					articles.remove(targetIndex);
 				}
-			}
-			
-			else if(s.equals("signup")) {
-				//멤버로수정해
-				Article article = new Article();
-				
-				System.out.println("새 아이디를 입력해주세요");
-				article.setAccont(sc.nextLine());
-
-				System.out.println("새 비밀번호를 입력해주세요");
-				article.setPassword(sc.nextLine());
-				
-				System.out.println("이름을 입력해주세요");
-				article.setUsername(sc.nextLine());
-				
-				articles.add(article);
-			}
-			else {
+				BACK();
+			} else {
 				System.out.println("올바른 명령어가 아닙니다.");
+				BACK();
 			}
 		}		
 	}
@@ -123,5 +124,9 @@ public class App {
 		}
 		
 		return targetIndex;
+	}
+	static void BACK(){	
+		App app = new App();
+		app.start();
 	}
 }
