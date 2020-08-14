@@ -40,12 +40,18 @@ public class MemberController {
 				System.out.println("signup : 회원 가입 기능");
 				System.out.println("back : 탈출");
 				System.out.println("login: ");
+				System.out.println("exit : 프로그램 종료");
 				
 			} else if(s.equals("back")) {
 				BACK();
 			} else if(s.equals("login")) {
 				BACK();
-			} 
+			} else if (s.equals("exit")) {
+
+				System.out.println("프로그램 종료!");
+				break;
+
+			}
 	
 			else {
 				System.out.println("올바른 명령어가 아닙니다.");
@@ -59,4 +65,3 @@ public class MemberController {
 		app.start();
 	} 
 }
-

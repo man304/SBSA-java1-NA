@@ -6,6 +6,7 @@ public class Member {
 	private String Password;
 	private String Username;
 
+	
 	public String getAccount() {
 		return Account;
 	}

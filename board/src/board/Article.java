@@ -7,6 +7,10 @@ public class Article {
 	private String title;
 	private String body;
 
+	Article (int id, String title, String body){
+		this.id = id; this.title = title; this.body = body;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -30,5 +34,7 @@ public class Article {
 	public void setBody(String body) {
 		this.body = body;
 	}
+	
+	
 
 }

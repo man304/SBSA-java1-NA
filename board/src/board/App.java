@@ -12,6 +12,11 @@ public class App {
 		
 		Scanner sc = new Scanner(System.in);
 		
+		Article article1 = new Article (1, "안녕요", "안녕 지구인들아");
+		Article article2 = new Article (2, "하이요", "잘가 안녕안녕");
+		articles.add(article1);
+		articles.add(article2);
+		
 		boolean APP = false;
 		
 		System.out.println("게시판 기능은 1번, 회원 기능은 2번을 입력해주세요.");
@@ -31,8 +36,9 @@ public class App {
 			String s = sc.nextLine();
 			
 			if (s.equals("exit")) {
-
+				
 				System.out.println("프로그램 종료!");
+				APP = false;
 				break;
 
 			} else if (s.equals("help")) {
@@ -42,25 +48,25 @@ public class App {
 				System.out.println("list : 게시물 목록");
 				System.out.println("update : 게시물 수정");
 				System.out.println("delete : 게시물 삭제");
+				System.out.println("back : 탈출");
 				System.out.println("exit : 프로그램 종료");
-				
+				System.out.println("search : 게시물 검색");
+
 			} else if (s.equals("add")) {
 				
-								
-				Article article = new Article();
+
 				
 				lastId++; // 게시물 번호 자동 증가
 				int id = lastId;
-				
-				article.setId(id);
 
 				System.out.println("제목을 입력해주세요");
-				article.setTitle(sc.nextLine());
+				String title = sc.nextLine();
 
 				System.out.println("내용을 입력해주세요");
-				article.setBody(sc.nextLine());
+				String body = sc.nextLine();
 				
-				articles.add(article);
+				Article article = new Article (id, title, body);
+				articles.add(article);	
 				BACK();
 				
 			} else if (s.equals("list")) {
@@ -70,12 +76,12 @@ public class App {
 					System.out.println("제목 : " + articles.get(i).getTitle());
 					System.out.println("내용 : " + articles.get(i).getBody());
 					System.out.println("=====================");
-				}
+				} BACK();
 			} else if (s.equals("update")) {
 				System.out.println("수정할 게시물 번호를 입력해주세요.");
 				String target = sc.nextLine();
-				int targetNo = Integer.parseInt(target);
 
+				int targetNo = Integer.parseInt(target);
 				int targetIndex = getArticleIndexById(targetNo);
 
 				
@@ -107,6 +113,33 @@ public class App {
 					articles.remove(targetIndex);
 				}
 				BACK();
+			} else if(s.equals("back")) {
+				BACK();
+			} else if (s.equals("search")) {
+				
+				System.out.println("검색");
+				
+				String Keyword = sc.nextLine();
+				
+				for (int i = 0; i < articles.size(); i++) {					
+					if(articles.get(i).getTitle().contains(Keyword)) {
+						
+						System.out.println("번호 : " + articles.get(i).getId());
+						System.out.println("제목 : " + articles.get(i).getTitle());
+						System.out.println("내용 : " + articles.get(i).getBody());
+						System.out.println("=====================");
+					
+					}
+					if(articles.get(i).getBody().contains(Keyword)) {
+						
+						System.out.println("번호 : " + articles.get(i).getId());
+						System.out.println("제목 : " + articles.get(i).getTitle());
+						System.out.println("내용 : " + articles.get(i).getBody());
+						System.out.println("=====================");
+					
+					}
+				}
+								
 			} else {
 				System.out.println("올바른 명령어가 아닙니다.");
 				BACK();
@@ -126,6 +159,7 @@ public class App {
 		return targetIndex;
 	}
 	static void BACK(){	
+		
 		App app = new App();
 		app.start();
 	}
