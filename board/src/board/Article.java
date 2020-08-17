@@ -6,9 +6,31 @@ public class Article {
 	private int id;
 	private String title;
 	private String body;
+	private String writer;
+	private String regDate;
 
-	Article (int id, String title, String body){
-		this.id = id; this.title = title; this.body = body;
+	Article (int id, String title, String body, String writer, String regDate){
+		this.id = id; 
+		this.title = title; 
+		this.body = body; 
+		this.writer = writer;
+		this.regDate = regDate;
+	}
+
+	public String getWriter() {
+		return writer;
+	}
+
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+
+	public String getRegDate() {
+		return regDate;
+	}
+
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
 	}
 
 	public int getId() {
