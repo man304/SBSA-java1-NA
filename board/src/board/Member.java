@@ -1,33 +1,36 @@
+
 package board;
 
 public class Member {
-
-	private String Account;
-	private String Password;
-	private String Username;
-
+	private String loginId;
+	private String loginPw;
+	private String userName;
 	
-	public String getAccount() {
-		return Account;
+	Member(){
+		
 	}
-
-	public void setAccont(String Account) {
-		this.Account = Account;
+	Member(String loginId, String loginPw, String userName) {
+		this.loginId = loginId;
+		this.loginPw = loginPw;
+		this.userName = userName;
 	}
-
-	public String getPassword() {
-		return Password;
+	public String getLoginId() {
+		return loginId;
 	}
-
-	public void setPassword(String Password) {
-		this.Password = Password;
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
 	}
-
-	public String getUsername() {
-		return Username;
+	public String getLoginPw() {
+		return loginPw;
 	}
-
-	public void setUsername(String Username) {
-		this.Username = Username;
+	public void setLoginPw(String loginPw) {
+		this.loginPw = loginPw;
 	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	
 }
