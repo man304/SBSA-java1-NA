@@ -1,4 +1,3 @@
-
 package board;
 
 public class Member {
@@ -6,10 +5,11 @@ public class Member {
 	private String loginPw;
 	private String userName;
 	
-	Member(){
+	public Member(){
 		
 	}
-	Member(String loginId, String loginPw, String userName) {
+	
+	public Member(String loginId, String loginPw, String userName) {
 		this.loginId = loginId;
 		this.loginPw = loginPw;
 		this.userName = userName;
