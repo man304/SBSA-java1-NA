@@ -8,13 +8,13 @@ public class ArticleController {
 	ArrayList<Article> articles = new ArrayList<>();
 	ArrayList<Reply> replies = new ArrayList<>();
 	
-	int lastId = 3; // ê°€ì¥ ë§ˆì§€ë§‰ì— ì¶”ê°€ëœ ê²Œì‹œë¬¼ì˜ ê²Œì‹œë¬¼ ë²ˆí˜¸
+	int lastId = 3; // °¡Àå ¸¶Áö¸·¿¡ Ãß°¡µÈ °Ô½Ã¹°ÀÇ °Ô½Ã¹° ¹øÈ£
 	
-	ArticleController() { //ìƒì„±ì ì´ˆê¸°ì„¸íŒ…ìš©
+	ArticleController() { //»ı¼ºÀÚ ÃÊ±â¼¼ÆÃ¿ë
 		
-		Article article1 = new Article(1, "ì•ˆë…•í•˜ì„¸ìš”", "ì•ˆë…•í•˜ì„¸ìš”", "ìµëª…", "20200817");
-		Article article2 = new Article(2, "JAVA í”„ë¡œê·¸ë˜ë°", "JAVA í”„ë¡œê·¸ë˜ë°", "ìµëª…", "20200817");
-		Article article3 = new Article(3, "ì–´ë µì§€ ì•Šì•„ìš”", "ì–´ë µì§€ ì•Šì•„ìš”", "ìµëª…", "20200817");
+		Article article1 = new Article(1, "¾È³ç Áö±¸ÀÎµé¾Æ", "¾È³ç ¹İ°¡¿ö ³» ÀÌ¸§Àº ¹Î´ŞÆØÀÌ¾ß", "±è¹Î´ŞÆØÀÌ", "20200817");
+		Article article2 = new Article(2, "JAVA ÇÁ·Î±×·¡¹Ö", "JAVA ÇÁ·Î±×·¡¹Ö ÀÚ¹Ù ÇÁ·Î±×·¡¹Ö ÀÚ¹Ù ÇÁ·Î±×·¡¹Ö ÀÚ¹Ù ÇÁ", "ÀÍ¸í", "20200817");
+		Article article3 = new Article(3, "¾î·ÆÁö ¾Ê¾Æ¿ä", "¾î·ÆÁö ¾Ê¾Æ¿ä ¾î·ÆÁö ¾Ê¾Æ¿ä ¾î·ÆÁö ¾Ê¾Æ¿ä ¾î·ÆÁö ¾Ê¾Æ¿ä ¾î·ÆÁö ¾Ê¾Æ", "ÀÍ¸í", "20200817");
 		
 		articles.add(article1);
 		articles.add(article2);
@@ -26,48 +26,48 @@ public class ArticleController {
 	
 		if (cmd.equals("help")) {
 
-			System.out.println("add : ê²Œì‹œë¬¼ ë“±ë¡");
-			System.out.println("list : ê²Œì‹œë¬¼ ëª©ë¡");
-			System.out.println("update : ê²Œì‹œë¬¼ ìˆ˜ì •");
-			System.out.println("delete : ê²Œì‹œë¬¼ ì‚­ì œ");
-			System.out.println("search : ê²€ìƒ‰");
-			System.out.println("read : ìƒì„¸ë³´ê¸°");
-			System.out.println("signup : ê°€ì…");
-			System.out.println("login : ë¡œê·¸ì¸");
-			System.out.println("logout : ë¡œê·¸ì•„ì›ƒ");
-			System.out.println("reply : ëŒ“ê¸€");
+			System.out.println("add : °Ô½Ã¹° µî·Ï");
+			System.out.println("list : °Ô½Ã¹° ¸ñ·Ï");
+			System.out.println("update : °Ô½Ã¹° ¼öÁ¤");
+			System.out.println("delete : °Ô½Ã¹° »èÁ¦");
+			System.out.println("search : °Ë»ö");
+			System.out.println("read : »ó¼¼º¸±â");
+			System.out.println("signup : °¡ÀÔ");
+			System.out.println("login : ·Î±×ÀÎ");
+			System.out.println("logout : ·Î±×¾Æ¿ô");
+			System.out.println("reply : ´ñ±Û");
 			
 		} else if (cmd.equals("add")) {
 			if(App.loginedMember == null) {
-				System.out.println("ë¡œê·¸ì¸ì´ í•„ìš”í•œ ê¸°ëŠ¥ì…ë‹ˆë‹¤.");
+				System.out.println("·Î±×ÀÎÀÌ ÇÊ¿äÇÑ ±â´ÉÀÔ´Ï´Ù.");
 			} else {
-				lastId++; // ê²Œì‹œë¬¼ ë²ˆí˜¸ ìë™ ì¦ê°€
+				lastId++; // °Ô½Ã¹° ¹øÈ£ ÀÚµ¿ Áõ°¡
 				int id = lastId;
 
-				System.out.println("ì œëª©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”");
+				System.out.println("Á¦¸ñÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä");
 				String title = sc.nextLine();
 
-				System.out.println("ë‚´ìš©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”");
+				System.out.println("³»¿ëÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä");
 				String body = sc.nextLine();
 				
-				Article article = new Article(id, title, body, "ìµëª…", "20200817");
+				Article article = new Article(id, title, body, "ÀÍ¸í", "20200817");
 				articles.add(article);
 			}
 		} else if (cmd.equals("list")) {
 			printArticles(articles);
 		} else if (cmd.equals("update")) {
-			System.out.println("ìˆ˜ì •í•  ê²Œì‹œë¬¼ ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+			System.out.println("¼öÁ¤ÇÒ °Ô½Ã¹° ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 			String target = sc.nextLine();
 			int targetNo = Integer.parseInt(target);
 
 			int targetIndex = getArticleIndexById(targetNo);
 
 			if (targetIndex == -1) {
-				System.out.println("ì—†ëŠ” ê²Œì‹œë¬¼ì…ë‹ˆë‹¤.");
+				System.out.println("¾ø´Â °Ô½Ã¹°ÀÔ´Ï´Ù.");
 			} else {
-				System.out.println("ìˆ˜ì •í•  ì œëª©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+				System.out.println("¼öÁ¤ÇÒ Á¦¸ñÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 				String title = sc.nextLine();
-				System.out.println("ìˆ˜ì •í•  ë‚´ìš©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+				System.out.println("¼öÁ¤ÇÒ ³»¿ëÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 				String body = sc.nextLine();
 
 				Article article = articles.get(targetIndex);
@@ -77,19 +77,19 @@ public class ArticleController {
 			}
 
 		} else if (cmd.equals("delete")) {
-			System.out.println("ì‚­ì œí•  ê²Œì‹œë¬¼ ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+			System.out.println("»èÁ¦ÇÒ °Ô½Ã¹° ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 			String target = sc.nextLine();
 			int targetNo = Integer.parseInt(target);
 
 			int targetIndex = getArticleIndexById(targetNo);
 
 			if (targetIndex == -1) {
-				System.out.println("ì—†ëŠ” ê²Œì‹œë¬¼ì…ë‹ˆë‹¤.");
+				System.out.println("¾ø´Â °Ô½Ã¹°ÀÔ´Ï´Ù.");
 			} else {
 				articles.remove(targetIndex);
 			}
 		} else if (cmd.equals("search")) {
-			System.out.println("ê²€ìƒ‰ì–´ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+			System.out.println("°Ë»ö¾î¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 			String keyword = sc.nextLine();	//1
 			
 			ArrayList<Article> searchedList = new ArrayList<>();
@@ -105,16 +105,16 @@ public class ArticleController {
 			
 		} else if (cmd.equals("read")) {
 			
-			System.out.println("ìƒì„¸ë³´ê¸° í•  ê²Œì‹œë¬¼ ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+			System.out.println("»ó¼¼º¸±â ÇÒ °Ô½Ã¹° ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 			String target = sc.nextLine();
 			int targetNo = Integer.parseInt(target);
 
 			int targetIndex = getArticleIndexById(targetNo);
 
 			if (targetIndex == -1) {
-				System.out.println("ì—†ëŠ” ê²Œì‹œë¬¼ì…ë‹ˆë‹¤.");
+				System.out.println("¾ø´Â °Ô½Ã¹°ÀÔ´Ï´Ù.");
 			} else {
-				printArticle(articles.get(targetIndex));
+				printArticle(articles.get(targetIndex), targetIndex);
 				viewDetail(targetIndex);
 			}
 		} /*else if (cmd.equals("reply")) {
@@ -123,26 +123,25 @@ public class ArticleController {
 	} 
 	
 	void viewDetail(int targetIndex) {
-		System.out.println("ìƒì„¸ë³´ê¸° ëª…ë ¹ì–´ ì…ë ¥(back/reply)");
+		System.out.println("»ó¼¼º¸±â ¸í·É¾î ÀÔ·Â(back/reply)");
 		String cmd = sc.nextLine();
 		while(true){
 			if(cmd.equals("back")) {
 				break;
 			} 
 			else if(cmd.equals("reply")) {
-				System.out.println("ëŒ“ê¸€ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+				System.out.println("´ñ±ÛÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 					String rep = sc.nextLine();
 					Reply rep1 = new Reply(targetIndex, rep);
 					replies.add(rep1);
-					printArticle(articles.get(targetIndex));
-					
+					printArticle(articles.get(targetIndex), targetIndex);				
 					break;
 			}				
 		}
 		
 	}
 	int getArticleIndexById(int targetNo) {
-		int targetIndex = -1; // ì°¾ëŠ”ê²Œ ì—†ì„ ë•Œ -1
+		int targetIndex = -1; // Ã£´Â°Ô ¾øÀ» ¶§ -1
 
 		for (int i = 0; i < articles.size(); i++) {
 			if (articles.get(i).getId() == targetNo) {
@@ -154,25 +153,28 @@ public class ArticleController {
 	}
 	void printArticles(ArrayList<Article> articles) {
 		for (int i = 0; i < articles.size(); i++) {
-			System.out.println("ë²ˆí˜¸ : " + articles.get(i).getId());
-			System.out.println("ì œëª© : " + articles.get(i).getTitle());
+			System.out.println("¹øÈ£ : " + articles.get(i).getId());
+			System.out.println("Á¦¸ñ : " + articles.get(i).getTitle());
 			System.out.println("=====================");
 			
 		}
 	}
-	void printArticle(Article article) {
-		System.out.println("======== " + article.getId() + "ë²ˆ ê²Œì‹œë¬¼ ìƒì„¸ë³´ê¸° =======");
-		System.out.println("ë²ˆí˜¸   : " + article.getId());
-		System.out.println("ì œëª©   : " + article.getTitle());
-		System.out.println("ë‚´ìš©   : " + article.getBody());
-		System.out.println("ì‘ì„±ì : " + article.getWriter());
-		System.out.println("ì‘ì„±ì¼ : " + article.getRegDate());
-		printReply(article);
+	void printArticle(Article article, int targetIndex) {
+		System.out.println("======== " + article.getId() + "¹ø °Ô½Ã¹° »ó¼¼º¸±â =======");
+		System.out.println("¹øÈ£   : " + article.getId());
+		System.out.println("Á¦¸ñ   : " + article.getTitle());
+		System.out.println("³»¿ë   : " + article.getBody());
+		System.out.println("ÀÛ¼ºÀÚ : " + article.getWriter());
+		System.out.println("ÀÛ¼ºÀÏ : " + article.getRegDate());
+		printReply(targetIndex);
 	}
-	void printReply(Reply replies) {
-		System.out.println("===== ëŒ“ê¸€ =====");
-		for(int i = 0;i < replies.length; i++) {
-			
+	void printReply(int targetIndex) {
+		System.out.println("===== ´ñ±Û =====");
+		for(int i = 0;i < replies.size(); i++) {
+			if(replies.get(i).getId() == targetIndex) {
+				System.out.println( "´ñ±Û" + (i + 1) + " : " + replies.get(i).getReply());
+			}
 		}
+		System.out.println("=====================");
 	}
 }

@@ -2,7 +2,7 @@ package board;
 
 public class Article {
 	
-	// ì ‘ê·¼ì œì–´ì
+	// Á¢±ÙÁ¦¾îÀÚ
 	private int id;
 	private String title;
 	private String body;
