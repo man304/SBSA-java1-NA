@@ -32,7 +32,7 @@ public class MemberController {
 			
 			System.out.println("아이디를 입력해주세요");
 			member.setLoginId(sc.nextLine());
-
+			
 			System.out.println("비밀번호를 입력해주세요");
 			member.setLoginPw(sc.nextLine());
 			

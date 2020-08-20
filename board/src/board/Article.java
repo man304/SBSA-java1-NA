@@ -8,7 +8,7 @@ public class Article {
 	private String body;
 	private String writer;
 	private String regDate;
-	
+		
 	Article() {
 		
 	}
@@ -55,5 +55,5 @@ public class Article {
 	public void setBody(String body) {
 		this.body = body;
 	}
-	
+		
 }
