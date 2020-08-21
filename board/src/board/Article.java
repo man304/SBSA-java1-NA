@@ -2,25 +2,35 @@ package board;
 
 public class Article {
 	
-	// Á¢±ÙÁ¦¾îÀÚ
+	// ÃÂ¢Â±Ã™ÃÂ¦Â¾Ã®Ã€Ãš
 	private int id;
 	private String title;
 	private String body;
 	private String writer;
 	private String regDate;
-		
+	private int viewCount;
+
 	Article() {
 		
 	}
 	
-	Article(int id, String title, String body, String writer, String regDate) {
+	Article(int id, String title, String body, String writer, String regDate, int viewCount) {
 		this.id = id;
 		this.title = title;
 		this.body = body;
 		this.writer = writer;
 		this.regDate = regDate;
+		this.viewCount = viewCount;
 	}
 	
+	public int getviewCount() {
+		return viewCount;
+	}
+
+	public void setviewCount(int ciewCount) {
+		this.viewCount = ciewCount;
+	}
+
 	public String getWriter() {
 		return writer;
 	}
