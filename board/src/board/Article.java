@@ -27,8 +27,8 @@ public class Article {
 		return viewCount;
 	}
 
-	public void setviewCount(int ciewCount) {
-		this.viewCount = ciewCount;
+	public void setviewCount(int viewCount) {
+		this.viewCount = viewCount;
 	}
 
 	public String getWriter() {

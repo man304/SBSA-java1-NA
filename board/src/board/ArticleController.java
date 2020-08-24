@@ -1,8 +1,6 @@
 package board;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
 
 public class ArticleController {
@@ -48,52 +46,52 @@ public class ArticleController {
 			if(App.loginedMember == null) {
 				System.out.println("로그인이 필요한 기능입니다.");
 			} else {
-				lastId++; // 게시물 번호 자동 증가
-				int id = lastId;
-
-				System.out.println("제목을 입력해주세요");
-				String title = sc.nextLine();
-
-				System.out.println("내용을 입력해주세요");
-				String body = sc.nextLine();
-				
-				Article article = new Article(id, title, body, App.loginedMember.getUserName(), today() , 0);
-				articles.add(article);
-			}
+				Add();
+			}	
 		} else if (cmd.equals("list")) {
 			printArticles(articles);
+			
 		} else if (cmd.equals("update")) {
-			System.out.println("수정할 게시물 번호를 입력해주세요.");
-			String target = sc.nextLine();
-			int targetNo = Integer.parseInt(target);
-
-			int targetIndex = getArticleIndexById(targetNo);
-
-			if (targetIndex == -1) {
-				System.out.println("없는 게시물입니다.");
+			
+			if(App.loginedMember == null) {
+				System.out.println("로그인이 필요한 기능입니다.");
+				
 			} else {
-				System.out.println("수정할 제목을 입력해주세요.");
-				String title = sc.nextLine();
-				System.out.println("수정할 내용을 입력해주세요.");
-				String body = sc.nextLine();
+				System.out.println("수정할 게시물 번호를 입력해주세요.");
+				String target = sc.nextLine();
+				int targetNo = Integer.parseInt(target);
 
-				Article article = articles.get(targetIndex);
-				article.setTitle(title);
-				article.setBody(body);
-
+				int targetIndex = getArticleIndexById(targetNo);
+				
+				if (targetIndex == -1) {
+					System.out.println("없는 게시물입니다.");
+				} if (App.loginedMember.getUserName().equals(articles.get(targetIndex).getWriter())) {
+					Update(targetIndex);
+					
+				} else {
+					System.out.println("자신의 게시물만 수정 가능합니다.");
+				}
 			}
 
 		} else if (cmd.equals("delete")) {
-			System.out.println("삭제할 게시물 번호를 입력해주세요.");
-			String target = sc.nextLine();
-			int targetNo = Integer.parseInt(target);
-
-			int targetIndex = getArticleIndexById(targetNo);
-
-			if (targetIndex == -1) {
-				System.out.println("없는 게시물입니다.");
+			if(App.loginedMember == null) {
+				System.out.println("로그인이 필요한 기능입니다.");
+				
 			} else {
-				articles.remove(targetIndex);
+				System.out.println("삭제할 게시물 번호를 입력해주세요.");
+				String target = sc.nextLine();
+				int targetNo = Integer.parseInt(target);
+
+				int targetIndex = getArticleIndexById(targetNo);
+				
+				if (targetIndex == -1) {
+					System.out.println("없는 게시물입니다.");
+				} else if (App.loginedMember.getUserName().equals(articles.get(targetIndex).getWriter())) {
+					Delete(targetIndex);
+					
+				} else {
+					System.out.println("자신의 게시물만 삭제 가능합니다.");
+				}
 			}
 		} else if (cmd.equals("search")) {
 			System.out.println("검색어를 입력해주세요.");
@@ -121,6 +119,8 @@ public class ArticleController {
 			if (targetIndex == -1) {
 				System.out.println("없는 게시물입니다.");
 			} else {
+				int currentCount = articles.get(targetIndex).getviewCount();
+				articles.get(targetIndex).setviewCount(currentCount + 1);
 				printArticle(articles.get(targetIndex), targetIndex);
 				viewDetail(targetIndex);
 			}
@@ -128,6 +128,36 @@ public class ArticleController {
 			
 		} */
 	} 
+	
+	void Add() {
+		lastId++; // 게시물 번호 자동 증가
+		int id = lastId;
+
+		System.out.println("제목을 입력해주세요");
+		String title = sc.nextLine();
+
+		System.out.println("내용을 입력해주세요");
+		String body = sc.nextLine();
+		
+		Article article = new Article(id, title, body, App.loginedMember.getUserName(), MyUtil.today() , 0);
+		articles.add(article);
+
+	}
+	void Delete(int targetIndex) {
+		articles.remove(targetIndex);
+		System.out.println("삭제했습니다.");
+	}
+	
+	void Update(int targetIndex) {
+		System.out.println("수정할 제목을 입력해주세요.");
+		String title = sc.nextLine();
+		System.out.println("수정할 내용을 입력해주세요.");
+		String body = sc.nextLine();
+
+		Article article = articles.get(targetIndex);
+		article.setTitle(title);
+		article.setBody(body);
+	}
 	
 	void viewDetail(int targetIndex) {
 		System.out.println("상세보기 명령어 입력(back/reply)");
@@ -142,7 +172,7 @@ public class ArticleController {
 				} else {
 					System.out.println("댓글을 입력해주세요.");
 					String rep = sc.nextLine();
-					Reply rep1 = new Reply(targetIndex, App.loginedMember.getUserName(), rep, today());
+					Reply rep1 = new Reply(targetIndex, App.loginedMember.getUserName(), rep, MyUtil.today());
 					replies.add(rep1);
 					printArticle(articles.get(targetIndex), targetIndex);				
 				}
@@ -188,12 +218,13 @@ public class ArticleController {
 		for(int i = 0;i < replies.size(); i++) {
 			if(replies.get(i).getId() == targetIndex) {
 				j++;
-				System.out.println("댓글" + j + " " + replies.get(i).getWriter() + " 날짜");
+				System.out.println("댓글" + j + " " + replies.get(i).getWriter() + " " + replies.get(i).getYymmdd());
 				System.out.println(replies.get(i).getReply());
 			}
 		}
 		System.out.println("=====================");
 	}
+	/*
 	String today() {
 		SimpleDateFormat date = new SimpleDateFormat ("yyyy년 MM/dd HH:mm");
 		
@@ -203,4 +234,5 @@ public class ArticleController {
 		
 		return nowdate;
 	}
+	*/
 }
