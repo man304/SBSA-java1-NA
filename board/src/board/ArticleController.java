@@ -160,7 +160,7 @@ public class ArticleController {
 	}
 	
 	void viewDetail(int targetIndex) {
-		System.out.println("상세보기 명령어 입력(back/reply)");
+		System.out.println("상세보기 명령어 입력(back/reply/like/hate)");
 		String cmd = sc.nextLine();
 		while(true){
 			if(cmd.equals("back")) {
@@ -177,7 +177,28 @@ public class ArticleController {
 					printArticle(articles.get(targetIndex), targetIndex);				
 				}
 				break;
-			} else {
+			} else if (cmd.equals("like")){
+				
+				if(App.loginedMember == null) {
+					System.out.println("로그인이 필요한 기능입니다.");
+													
+				} else {
+					
+				}
+				
+				
+			} else if (cmd.equals("hate")){
+				if(App.loginedMember == null) {
+					System.out.println("로그인이 필요한 기능입니다.");
+				}
+				int Hates = articles.get(targetIndex).getHate();
+				Hates ++;
+				System.out.println("싫어요");
+				articles.get(targetIndex).setHate(Hates);
+				printArticle(articles.get(targetIndex), targetIndex);
+				
+				break;
+			}else {
 				System.out.println("잘못된 명령어");
 				break;
 			}				
@@ -209,6 +230,8 @@ public class ArticleController {
 		System.out.println("내용   : " + article.getBody());
 		System.out.println("작성자 : " + article.getWriter());
 		System.out.println("조회수 : " + article.getviewCount());
+		System.out.println("좋아요 : " + article.getLike());
+		System.out.println("싫어요 : " + article.getHate());
 		System.out.println("작성일 : " + article.getRegDate());
 		printReply(targetIndex);
 	}

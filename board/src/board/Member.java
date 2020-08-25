@@ -5,6 +5,8 @@ public class Member {
 	private String loginPw;
 	private String userName;
 	
+	
+	
 	public Member(){
 		
 	}
@@ -14,6 +16,7 @@ public class Member {
 		this.loginPw = loginPw;
 		this.userName = userName;
 	}
+		
 	public String getLoginId() {
 		return loginId;
 	}

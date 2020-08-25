@@ -9,6 +9,8 @@ public class Article {
 	private String writer;
 	private String regDate;
 	private int viewCount;
+	private int like;
+	private int hate;
 
 	Article() {
 		
@@ -23,6 +25,24 @@ public class Article {
 		this.viewCount = viewCount;
 	}
 	
+	
+
+	public int getHate() {
+		return hate;
+	}
+
+	public void setHate(int hate) {
+		this.hate = hate;
+	}
+
+	public int getLike() {
+		return like;
+	}
+
+	public void setLike(int like) {
+		this.like = like;
+	}
+
 	public int getviewCount() {
 		return viewCount;
 	}
