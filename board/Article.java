@@ -9,38 +9,32 @@ public class Article {
 	private String writer;
 	private String regDate;
 	private int viewCount;
-	private int like;
-	private int hate;
-
+	private int page;
+	
 	Article() {
 		
 	}
 	
-	Article(int id, String title, String body, String writer, String regDate, int viewCount) {
+	Article(int id, String title, String body, String writer, String regDate, int viewCount, int page) {
 		this.id = id;
 		this.title = title;
 		this.body = body;
 		this.writer = writer;
 		this.regDate = regDate;
 		this.viewCount = viewCount;
+		this.page = page;
 	}
 	
 	
 
-	public int getHate() {
-		return hate;
+	
+	
+	public int getPage() {
+		return page;
 	}
 
-	public void setHate(int hate) {
-		this.hate = hate;
-	}
-
-	public int getLike() {
-		return like;
-	}
-
-	public void setLike(int like) {
-		this.like = like;
+	public void setPage(int page) {
+		this.page = page;
 	}
 
 	public int getviewCount() {
