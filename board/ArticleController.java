@@ -11,31 +11,38 @@ public class ArticleController {
 	ArrayList<Member> members = new ArrayList<>();
 	ArrayList<Like> likes = new ArrayList<>();
 
-	int lastId = 9; // 가장 마지막에 추가된 게시물의 게시물 번호
-	int lastPage = 2;
+	int lastId = 11; // 가장 마지막에 추가된 게시물의 게시물 번호
+	int lastPage = 3;
+	int currentPage = 1;
 	ArticleController() { // 생성자 초기세팅용
 
 		Article article1 = new Article(1, "안녕 지구인들아", "안녕 반가워 내 이름은 민달팽이야", "김민달팽이", "20200817", 2310, 1);
-		Article article2 = new Article(2, "JAVA 프로그래밍", "JAVA 프로그래밍 자바 프로그래밍 자바 프로그래밍 자바 프", "익명", "20200817", 1,1);
-		Article article3 = new Article(3, "어렵지 않아요", "어렵지 않아요 어렵지 않아요 어렵지 않아요 어렵지 않아요 어렵지 않아", "익명", "20200817", 2,1);
-		Article article4 = new Article(4, "2페이지테스트", "페이지테스트", "익명", "TEST", 0 ,1);
+		Article article2 = new Article(2, "JAVA 프로그래밍", "JAVA 프로그래밍 자바 프로그래밍 자바 프로그래밍 자바 프", "익명", "20200817", 1, 1);
+		Article article3 = new Article(3, "어렵지 않아요", "어렵지 않아요 어렵지 않아요 어렵지 않아요 어렵지 않아요 어렵지 않아", "익명", "20200817", 2, 1);
+		Article article4 = new Article(4, "페이지테스트", "페이지테스트", "익명", "TEST", 0, 1);
 		Article article5 = new Article(5, "페이지테스트", "페이지테스트", "익명", "TEST", 0, 1);
-		
-		Article article6 = new Article(6, "페이지테스트", "페이지테스트", "익명", "TEST", 0, 2);
-		Article article7 = new Article(7, "3페이지테스트", "페이지테스트", "익명", "TEST", 0, 2);
+
+		Article article6 = new Article(6, "2페이지테스트", "페이지테스트", "익명", "TEST", 0, 2);
+		Article article7 = new Article(7, "페이지테스트", "페이지테스트", "익명", "TEST", 0, 2);
 		Article article8 = new Article(8, "페이지테스트", "페이지테스트", "익명", "TEST", 0, 2);
 		Article article9 = new Article(9, "페이지테스트", "페이지테스트", "익명", "TEST", 0, 2);
+		Article article10 = new Article(10, "페이지테스트", "페이지테스트", "익명", "TEST", 0, 2);
+
+		Article article11 = new Article(11, "3페이지테스트", "페이지테스트", "익명", "TEST", 0, 2);
 
 		articles.add(article1);
 		articles.add(article2);
 		articles.add(article3);
 		articles.add(article4);
 		articles.add(article5);
-		
+
 		articles.add(article6);
 		articles.add(article7);
 		articles.add(article8);
 		articles.add(article9);
+		articles.add(article10);
+
+		articles.add(article11);
 
 	}
 
@@ -52,8 +59,7 @@ public class ArticleController {
 			System.out.println("signup : 가입");
 			System.out.println("login : 로그인");
 			System.out.println("logout : 로그아웃");
-			System.out.println("reply : 댓글");
-
+			
 		} else if (cmd.equals("add")) {
 			if (App.loginedMember == null) {
 				System.out.println("로그인이 필요한 기능입니다.");
@@ -148,6 +154,27 @@ public class ArticleController {
 			com.setFlag(flag);
 			Collections.sort(articles, com);
 			printArticles(articles);
+			
+		} else if(cmd.equals("page")) {
+			while(true) {
+				System.out.println("페이징 기능을 선택해주세요. (prev : 이전, next : 다음, go : 선택, back : 뒤로가기)");
+				String pcmd = sc.nextLine();
+				if (pcmd.equals("prev")) {
+					currentPage--;
+					printArticlesPage(articles, currentPage);
+				} else if (pcmd.equals("next")) {
+					currentPage++;
+					printArticlesPage(articles, currentPage);
+				} else if (pcmd.equals("go")) {
+					System.out.println("원하는 페이지를 선택해주세요.");
+					int i = Integer.parseInt(sc.nextLine());
+					currentPage = i;
+					printArticlesPage(articles, currentPage);
+				} else if (pcmd.equals("back")) {
+					System.out.println("페이지 기능 종료");
+					break;
+				}
+			}
 		}
 	}
 
@@ -156,8 +183,7 @@ public class ArticleController {
 		lastId++; // 게시물 번호 자동 증가
 		int id = lastId;
 		int page = lastPage;
-		
-		
+
 		System.out.println("제목을 입력해주세요");
 		String title = sc.nextLine();
 
@@ -166,10 +192,10 @@ public class ArticleController {
 
 		Article article = new Article(id, title, body, App.loginedMember.getUserName(), MyUtil.today(), 0, page);
 		articles.add(article);
-		
-		if(lastId % 5 == 0) {
-			lastPage ++;
-			
+
+		if (lastId % 5 == 0) {
+			lastPage++;
+
 		}
 	}
 
@@ -191,7 +217,7 @@ public class ArticleController {
 
 	void viewDetail(int targetIndex) {
 		Article article = articles.get(targetIndex);
-		System.out.println("상세보기 명령어 입력(back/reply/like/hate)");
+		System.out.println("상세보기 명령어 입력(back / reply / like)");
 		String cmd = sc.nextLine();
 		while (true) {
 			if (cmd.equals("back")) {
@@ -207,6 +233,7 @@ public class ArticleController {
 					printArticle(articles.get(targetIndex), targetIndex);
 				}
 				break;
+
 			} else if (cmd.equals("like")) {
 				if (App.loginedMember == null) {
 					System.out.println("로그인 기능이 필요한 기능입니다.");
@@ -309,12 +336,48 @@ public class ArticleController {
 		for (int i = 0; i < articles.size(); i++) {
 			System.out.println("번호 : " + articles.get(i).getId());
 			System.out.println("제목 : " + articles.get(i).getTitle());
-			
+
 			System.out.println("=====================");
 
 		}
-	}
+	} 
 	
+	void printArticlesPage(ArrayList<Article> articles, int currentPage) {
+		
+		int startPage = 1; // 시작페이지
+		int pageCountInBlock = 5; // 페이지 블럭당 페이지 개수
+		//int currentPage = 1; // 현재 페이지
+		int itemsPerPage = 3; 
+		int lastPage = articles.size() / itemsPerPage; // 마지막 페이지
+		
+		int startPageInBlock = currentPage - (pageCountInBlock / 2); // 블럭 시작 페이지
+		int endPageInBlock = currentPage + (pageCountInBlock / 2); // 블럭 마지막 페이지
+		
+		if(startPageInBlock < startPage) { // 시작페이지 보다 작으면 안된다.
+			startPageInBlock = startPage;
+		}
+		
+		if(endPageInBlock > lastPage) { // 마지막 페이지 보다 크면 안된다.
+			endPageInBlock = lastPage;
+		}
+		
+		for(int i = (currentPage - 1) * itemsPerPage; i < (currentPage - 1) * itemsPerPage + itemsPerPage; i++) {
+			Article a = articles.get(i);
+			System.out.println("번호 : " + a.getId());
+			System.out.println("제목 : " + a.getTitle());
+			System.out.println("내용 : " + a.getBody());
+			System.out.println("=========================");
+		}
+		System.out.println("========== page =========");
+		for(int i = startPageInBlock; i <= endPageInBlock; i++) {
+			if(i == currentPage) {
+				System.out.print("[" + i + "] ");
+			} else {
+				System.out.print(i + " ");
+			}		
+		}
+	}
+
 	void printArticle(Article article, int targetIndex) {
 		System.out.println("======== " + article.getId() + "번 게시물 상세보기 =======");
 		System.out.println("제목   : " + article.getTitle());

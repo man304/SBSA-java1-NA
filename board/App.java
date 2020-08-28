@@ -28,6 +28,7 @@ public class App {
 				System.out.println("delete : 게시물 삭제");
 				System.out.println("search : 검색");
 				System.out.println("read : 상세보기");
+				System.out.println("sort : 정렬");
 				System.out.println("== 회원 기능 (member) ==");
 				System.out.println("signup : 가입");
 				System.out.println("login : 로그인");
